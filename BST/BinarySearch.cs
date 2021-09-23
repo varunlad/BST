@@ -6,44 +6,54 @@ using System.Threading.Tasks;
 
 namespace BST
 {
-    class BinaryTree
+    class BinarySearchTree<T> where T: IComparable<T> 
     {
-        public Node Root { get; set; }
-
-        public bool Add(int value)
+        public T NodeData { get; set; }
+        public BinarySearchTree<T> LeftTree { get; set; }
+        public BinarySearchTree<T> RightTree { get; set; }
+        public static int leftcCount;
+        public static int righyCount;
+        public BinarySearchTree(T nodeData)
         {
-            Node before = null, after = this.Root;
-
-            while (after != null)
+            this.NodeData = nodeData;
+            this.LeftTree = null;
+            this.RightTree = null;
+        }
+        int leftCount = 0, rightCount = 0;
+        bool result = false;
+        public void Insert(T item)
+        {
+            T currentNodeValue = this.NodeData;
+            if((currentNodeValue.CompareTo(item)>0))
             {
-                before = after;
-                if (value < after.Data) //Is new node in left tree? 
-                    after = after.LeftNode;
-                else if (value > after.Data) //Is new node in right tree?
-                    after = after.RightNode;
+                if (this.LeftTree == null)
+                    this.LeftTree = new BinarySearchTree<T>(item);
                 else
-                {
-                    //Exist same value
-                    return false;
-                }
+                    this.LeftTree.Insert(item);
             }
-
-            Node newNode = new Node();
-            newNode.Data = value;
-
-            if (this.Root == null)//Tree ise empty
-                this.Root = newNode;
             else
             {
-                if (value < before.Data)
-                    before.LeftNode = newNode;
+                if (this.RightTree == null)
+                    this.RightTree = new BinarySearchTree<T>(item);
                 else
-                    before.RightNode = newNode;
+                    this.RightTree.Insert(item);
             }
-            Console.WriteLine(newNode.Data);
-            return true;
         }
-
+        public void Display()
+        {
+            
+            if (this.LeftTree!=null)
+            {
+                leftCount++;
+                this.LeftTree.Display();
+            }
+            Console.WriteLine(this.NodeData.ToString());
+            if (this.RightTree != null)
+            {
+                rightCount++;
+                this.RightTree.Display();
+            }
+        }
 
     }
 }

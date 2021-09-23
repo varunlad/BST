@@ -11,15 +11,10 @@ namespace BST
         static void Main(string[] args)
         {
             Console.WriteLine("Binary Search Tree");
-            BinaryTree binaryTree = new BinaryTree();
-
-            binaryTree.Add(56);
-            binaryTree.Add(30);
-            binaryTree.Add(70);
-            binaryTree.Add(60);
-            binaryTree.Add(78);
-            binaryTree.Add(80);
-            binaryTree.Add(50);
+            BinarySearchTree<int> binaryTree = new BinarySearchTree<int>(56);
+            binaryTree.Insert(30);
+            binaryTree.Insert(70);
+            binaryTree.Display();
             Console.ReadLine();
         }
     }
