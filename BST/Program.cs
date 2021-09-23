@@ -17,9 +17,12 @@ namespace BST
             binaryTree.Insert(22);
             binaryTree.Insert(40);
             binaryTree.Insert(60);
-            binaryTree.Insert(95);            
+            binaryTree.Insert(95);
+            binaryTree.Insert(95);
+            binaryTree.Insert(63);
             binaryTree.Display();
             binaryTree.GetSize();
+            bool result =binaryTree.IfExists(63,binaryTree);
             Console.ReadLine();
         }
     }

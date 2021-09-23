@@ -23,7 +23,8 @@ namespace BST
             this.NodeData = nodeData;
             this.LeftTree = null;
             this.RightTree = null;
-        }      
+        }
+        bool result = false;
         public void Insert(T item) //Insert into the Tree
         {
             T currentNodeValue = this.NodeData;
@@ -62,6 +63,30 @@ namespace BST
             Console.WriteLine("Size of Binary Tree is"+" "+(1+leftCount+rightCount));
         }
 
-
+        public bool IfExists(T element, BinarySearchTree<T> node)
+        {
+          if(node == null)
+            {
+                return false;
+            }
+          if(node.NodeData.Equals(element))
+            {
+                Console.WriteLine("Found the Element in BST" +" "+node.NodeData);
+                 result = true;
+            }
+          else
+            {
+                Console.WriteLine("Current Element is{0} in BST",node.NodeData);
+            }
+          if(element.CompareTo(node.NodeData)<0)
+            {
+                IfExists(element,node.LeftTree);
+            }
+            if (element.CompareTo(node.NodeData) > 0)
+            {
+                IfExists(element, node.RightTree);
+            }
+            return result;
+        }
     }
 }
