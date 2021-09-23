@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BST
 {
+    
     class BinarySearchTree<T> where T: IComparable<T> 
     {
         public T NodeData { get; set; }
@@ -13,6 +14,10 @@ namespace BST
         public BinarySearchTree<T> RightTree { get; set; }
         public static int leftcCount;
         public static int righyCount;
+        /// <summary>
+        /// Assigning the initiation
+        /// </summary>
+        /// <param name="nodeData"></param>
         public BinarySearchTree(T nodeData)
         {
             this.NodeData = nodeData;
@@ -21,7 +26,7 @@ namespace BST
         }
         int leftCount = 0, rightCount = 0;
         bool result = false;
-        public void Insert(T item)
+        public void Insert(T item) //Insert into the Tree
         {
             T currentNodeValue = this.NodeData;
             if((currentNodeValue.CompareTo(item)>0))
@@ -29,17 +34,17 @@ namespace BST
                 if (this.LeftTree == null)
                     this.LeftTree = new BinarySearchTree<T>(item);
                 else
-                    this.LeftTree.Insert(item);
+                    this.LeftTree.Insert(item); //Insert onto the Left side of Tree
             }
             else
             {
                 if (this.RightTree == null)
                     this.RightTree = new BinarySearchTree<T>(item);
                 else
-                    this.RightTree.Insert(item);
+                    this.RightTree.Insert(item); //Insert into Right side of Tree
             }
         }
-        public void Display()
+        public void Display() //Display of Binary Search Tree.
         {
             
             if (this.LeftTree!=null)
