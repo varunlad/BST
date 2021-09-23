@@ -14,7 +14,12 @@ namespace BST
             BinarySearchTree<int> binaryTree = new BinarySearchTree<int>(56);
             binaryTree.Insert(30);
             binaryTree.Insert(70);
+            binaryTree.Insert(22);
+            binaryTree.Insert(40);
+            binaryTree.Insert(60);
+            binaryTree.Insert(95);            
             binaryTree.Display();
+            binaryTree.GetSize();
             Console.ReadLine();
         }
     }
